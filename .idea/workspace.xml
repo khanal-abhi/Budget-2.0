@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="62c27f3f-f4e7-467b-a317-04df098697d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/budget/app.js" afterPath="$PROJECT_DIR$/budget/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/budget/routes/index.js" afterPath="$PROJECT_DIR$/budget/routes/index.js" />
     </list>
     <ignored path="Budget-2.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -260,12 +258,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1464479871466</updated>
-      <workItem from="1464479872943" duration="1763000" />
+      <workItem from="1464479872943" duration="1836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1763000" />
+    <option name="totallyTimeSpent" value="1836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
