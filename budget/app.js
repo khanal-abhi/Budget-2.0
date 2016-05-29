@@ -10,6 +10,10 @@ var users = require('./routes/users');
 
 var app = express();
 
+
+var MongoClient = require('mongodb').MongoClient;
+var dbprops = require('./dbprops');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -24,6 +28,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+MongoClient.connect("mongodb://" + dbprops['username'] + ":"+ dbprops['password'] +"@ds019053.mlab.com:19053/budget", function(err, db){
+
+  if(err){
+    console.log("Some DB error" + err);
+  } else {
+    console.log("db connection successful");
+  }
+
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
