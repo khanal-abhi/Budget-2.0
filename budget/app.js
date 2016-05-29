@@ -26,49 +26,59 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-
 MongoClient.connect("mongodb://" + dbprops['username'] + ":"+ dbprops['password'] +"@ds019053.mlab.com:19053/budget", function(err, db){
 
   if(err){
     console.log("Some DB error" + err);
   } else {
     console.log("db connection successful");
-  }
 
-});
+    app.use(function(req, res, next){
+      req.db = db;
+      next();
+    });
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+    app.use('/', routes);
+    app.use('/users', users);
+
+
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+      var err = new Error('Not Found');
+      err.status = 404;
+      next(err);
+    });
 
 // error handlers
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+    if (app.get('env') === 'development') {
+      app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+          message: err.message,
+          error: err
+        });
+      });
+    }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    app.use(function(err, req, res, next) {
+      res.status(err.status || 500);
+      res.render('error', {
+        message: err.message,
+        error: {}
+      });
+    });
+
+
+  }
+
 });
+
+
 
 
 module.exports = app;
